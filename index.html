@@ -14,6 +14,7 @@
       <div class="row">
         <div class="col-md-6">
 
+        <div class="pizzaOrder">
           <form id="new-order">
             <div class="form-group">
               <label for="new-first-name">First name</label>
@@ -27,11 +28,30 @@
             <button type="submit" class="btn btn-info">Add</button>
           </form>
 
+          <br>
+          <br>
 
           <h2>Add a pizza:</h2>
 
+            <h3> Please select your size </h3>
+          <form id="pizzaSize">
+           <div class="form-group">
+             <h3> Which of these tech hubs would like work in?</h3>
+             <label class="radio-inline">
+               <input type="radio" name="question1" value="twelve" id="twelve">12 in
+             </label>
+             <label class="radio-inline">
+               <input type="radio" name="question1" value="fourteen" id="fourteen">14 in
+             </label>
+             <label class="radio-inline">
+               <input type="radio" name="question1" value="eighteen" id="eighteen">18 in
+             </label>
+           </div>
+          </form>
+
+          <br>
             <div id="topping-items">
-              <label for="size">Topping List</label>
+              <label for="size"><strong>Topping List</strong></label>
               <ul class="topping-list">
                 <li>Pepperoni</li>
                 <li>Mushrooms</li>
@@ -48,11 +68,11 @@
 
             <form id="toppings">
               <div class="form-group">
-                <label for="toppingSelect">Toppings: Choose three from above</label>
+                <label for="toppingSelect"><strong>Toppings: Choose three from above</strong></label>
                 <input type="text" class="form-control" id="toppingSelect">
               </div>
 
-              <p><button type="submit" class="btn btn-success">Click Here</button> to add topping to order</p>
+              <p><button type="submit" class="btn btn-success">Click Here</button> to add each topping to order</p>
             </form>
 
             <h4>Pizza Contents
@@ -60,6 +80,9 @@
 
             </ul>
 
+            <button type="submit" class="btn btn-danger" id="getOrder">Submit Order</button>
+
+          </div>
         </div>
       </div>
     </div>

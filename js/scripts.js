@@ -18,36 +18,56 @@ var toppingArr=[]
 
 //Front End
 $(document).ready(function() {
-  $("#new-order").submit(function() {
+
+
+
+
+    $("#new-order").submit(function() {
+      event.preventDefault();
+
+    var inputtedFirstName = $("input#new-first-name").val();
+    var inputtedLastName = $("input#new-last-name").val();
+
+    var patron = new Customer(inputtedFirstName, inputtedLastName);
+
+    console.log(patron)
+
+    });
+
+    $("#toppings").submit(function() {
+      event.preventDefault();
+
+      var inputtedTopping = $("input#toppingSelect").val();
+      var newPizzaTopping = new Topping (inputtedTopping);
+
+
+      $(toppingArr.push(inputtedTopping))
+
+      $("ul#choiceList").append("<li>" + newPizzaTopping.selection + "</li>");
+      console.log(toppingArr)
+
+    });
+
+
+
+
+
+
+  $("button#pizzaOrder").submit(function() {
     event.preventDefault();
 
-  var inputtedFirstName = $("input#new-first-name").val();
-  var inputtedLastName = $("input#new-last-name").val();
+    function pizzaPrice() {
+    var pizzaSize = $("input:checkbox[name=question1]:checked").val();
+    }
 
-  var patron = new Customer(inputtedFirstName, inputtedLastName);
-
-  console.log(patron)
-
+    if (pizzaSize == ("#twelve")) {
+      alert("$7");
+    } else if(pizzaSize == ("#fourteen")) {
+      alert("$10");
+    } else {
+      alert("$12");
+    }
   });
-
-  $("#toppings").submit(function() {
-    event.preventDefault();
-
-    var inputtedTopping = $("input#toppingSelect").val();
-    var newPizzaTopping = new Topping (inputtedTopping);
-
-
-    $(toppingArr.push(inputtedTopping))
-
-    $("ul#choiceList").append("<li>" + newPizzaTopping.selection + "</li>");
-    console.log(toppingArr)
-
-  });
-
-
-
-
-
 
 
 });
