@@ -4,17 +4,8 @@ function Customer (first, last) {
   this.lastName = last;
 }
 
-
-
-function Pizza (crust, sauce, toppings) {
-  this.crust = crust
-  this.sauce = sauce
-  this.toppings = toppings
-}
-
-function Contact(first, last) {
-  this.firstName = first;
-  this.lastName = last;
+function Topping (selection) {
+  this.selection = selection;
 }
 
 var toppingArr=[]
@@ -39,13 +30,17 @@ $(document).ready(function() {
 
   });
 
-  $("ul.topping-list").click(function() {
-    var choice = $(this).attr('id')
+  $("#toppings").submit(function() {
+    event.preventDefault();
 
-    $(toppingArr.push(choice));
+    var inputtedTopping = $("input#toppingSelect").val();
+    var newPizzaTopping = new Topping (inputtedTopping);
 
-  console.log(toppingArr)
-console.log(choice)
+
+    $(toppingArr.push(inputtedTopping))
+
+    $("ul#choiceList").append("<li>" + newPizzaTopping.selection + "</li>");
+    console.log(toppingArr)
 
   });
 
