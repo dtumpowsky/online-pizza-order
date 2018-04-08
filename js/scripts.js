@@ -2,6 +2,7 @@
 function Customer (first, last) {
   this.firstName = first;
   this.lastName = last;
+
 }
 
 function Topping (selection) {
@@ -10,17 +11,18 @@ function Topping (selection) {
 
 var toppingArr=[]
 
+function SubmitOrder (first, last, topping, size) {
+  this.firstName = first;
+  this.lastName = last;
+  this.topping = toppingArr;
+  this.size = size;
 
-// Pizza.prototype.this = function() {
-//
-// }
+}
+
 
 
 //Front End
 $(document).ready(function() {
-
-
-
 
     $("#new-order").submit(function() {
       event.preventDefault();
@@ -29,6 +31,10 @@ $(document).ready(function() {
     var inputtedLastName = $("input#new-last-name").val();
 
     var patron = new Customer(inputtedFirstName, inputtedLastName);
+
+    if (patron === "") {
+      alert("Please complete your name")
+    }
 
     console.log(patron)
 
@@ -46,6 +52,8 @@ $(document).ready(function() {
       $("ul#choiceList").append("<li>" + newPizzaTopping.selection + "</li>");
       console.log(toppingArr)
 
+      $("input#toppingSelect").val("");
+
     });
 
 
@@ -53,21 +61,26 @@ $(document).ready(function() {
 
 
 
-  $("button#pizzaOrder").submit(function() {
+  $("#getOrder").submit(function() {
     event.preventDefault();
 
-    function pizzaPrice() {
-    var pizzaSize = $("input:checkbox[name=question1]:checked").val();
-    }
 
-    if (pizzaSize == ("#twelve")) {
-      alert("$7");
-    } else if(pizzaSize == ("#fourteen")) {
-      alert("$10");
-    } else {
-      alert("$12");
-    }
+    var size = $("input:checkbox[name=question1]:checked").val();
+    var inputtedFirstName = $("input#new-first-name").val();
+    var inputtedLastName = $("input#new-last-name").val();
+    var newPizzaTopping = new Topping (inputtedTopping);
+    $(toppingArr.push(inputtedTopping))
+
+      if (size == ("#twelve")) {
+        alert("$7");
+      } else if(size == ("#fourteen")) {
+        alert("$10");
+      } else {
+        alert("$12");
+      }
+
+    var order = new SubmitOrder (inputtedFirstName, inputtedLastName, toppingArr, size)
+    console.log(order)
+
   });
-
-
 });
