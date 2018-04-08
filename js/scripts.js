@@ -64,19 +64,20 @@ $(document).ready(function() {
   $("#getOrder").submit(function() {
     event.preventDefault();
 
-
-    var size = $("input:checkbox[name=question1]:checked").val();
+    var size = $("input:radio[name=question1]:checked").val();
     var inputtedFirstName = $("input#new-first-name").val();
     var inputtedLastName = $("input#new-last-name").val();
-    var newPizzaTopping = new Topping (inputtedTopping);
-    $(toppingArr.push(inputtedTopping))
 
-      if (size == ("#twelve")) {
+    console.log(size)
+
+      if (size == "twelve") {
         alert("$7");
-      } else if(size == ("#fourteen")) {
+      } else if(size == "fourteen") {
         alert("$10");
-      } else {
+      } else if(size == "eighteen") {
         alert("$12");
+      }else{
+        alert("No size selected.")
       }
 
     var order = new SubmitOrder (inputtedFirstName, inputtedLastName, toppingArr, size)
